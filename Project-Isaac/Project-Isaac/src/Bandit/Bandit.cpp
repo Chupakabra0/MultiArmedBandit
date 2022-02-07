@@ -1,8 +1,7 @@
 #include "pch/pch.hpp"
+#include "Bandit.hpp"
 
-#include "BernoulliBandit.hpp"
-
-BooleanReward* BernoulliBandit::GenerateReward() {
+bool Bandit::GenerateReward() {
     std::random_device generator;
     std::bernoulli_distribution ditribution(this->probability_);
 
@@ -11,9 +10,13 @@ BooleanReward* BernoulliBandit::GenerateReward() {
     //std::clog << std::format("Generated value: {}\n", generatedValue);
     //std::clog << std::format("Probability value: {}%\n", this->probability_);
 
-    return new BooleanReward(generatedValue);
+    return generatedValue;
 }
 
-double BernoulliBandit::GetProbability() {
+double Bandit::GetProbability() {
     return this->probability_;
+}
+
+std::string Bandit::GetName() {
+    return this->name_;
 }

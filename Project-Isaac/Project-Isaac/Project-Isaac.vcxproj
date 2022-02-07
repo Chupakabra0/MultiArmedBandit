@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -72,19 +72,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)src;$(ProjectDir)include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)src;$(ProjectDir)include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)src;$(ProjectDir)include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)src;$(ProjectDir)include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -159,18 +159,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="include\Bandits\BernoulliBandit.cpp" />
+    <ClCompile Include="src\BanditAlgorithms\Pursuit\Pursuit.cpp" />
+    <ClCompile Include="src\BanditAlgorithms\EpsilonKGreedy\EpsilonKGreedy.cpp" />
+    <ClCompile Include="src\BanditAlgorithms\EpsilonGreedy\EpsilonGreedy.cpp" />
+    <ClCompile Include="src\BanditAlgorithms\Base\BaseBanditAlgorithm.cpp" />
+    <ClCompile Include="src\BanditStats\BanditStats.cpp" />
+    <ClCompile Include="src\BanditPool\BanditPool.cpp" />
+    <ClCompile Include="src\Bandit\Bandit.cpp" />
     <ClCompile Include="include\pch\pch.cpp" />
+    <ClCompile Include="include\Utils\Utils.cpp" />
     <ClCompile Include="src\Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\BanditPools\BernoulliBanditPool.hpp" />
-    <ClInclude Include="include\DecisionMaker\DecisionMaker.hpp" />
+    <ClInclude Include="src\BanditAlgorithms\Pursuit\Pursuit.hpp" />
+    <ClInclude Include="src\BanditAlgorithms\EpsilonKGreedy\EpsilonKGreedy.hpp" />
+    <ClInclude Include="src\BanditAlgorithms\EpsilonGreedy\EpsilonGreedy.hpp" />
+    <ClInclude Include="src\BanditAlgorithms\Base\BaseBanditAlgorithm.h" />
+    <ClInclude Include="src\BanditStats\BanditStats.hpp" />
+    <ClInclude Include="src\BanditPool\BanditPool.hpp" />
+    <ClInclude Include="src\Bandit\Bandit.hpp" />
     <ClInclude Include="include\pch\pch.hpp" />
-    <ClInclude Include="include\Bandits\BernoulliBandit.hpp" />
-    <ClInclude Include="include\Bandits\IBandit.hpp" />
-    <ClInclude Include="include\Rewards\BooleanReward.hpp" />
-    <ClInclude Include="include\Rewards\IReward.hpp" />
+    <ClInclude Include="include\Utils\Utils.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

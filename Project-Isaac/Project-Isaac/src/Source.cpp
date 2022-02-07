@@ -1,40 +1,38 @@
 #include "pch/pch.hpp"
 
-//#include "Bandits/BernoulliBandit.hpp"
-#include "DecisionMaker/DecisionMaker.hpp"
+#include "BanditPool/BanditPool.hpp"
+
+#include "BanditAlgorithms/EpsilonGreedy/EpsilonGreedy.hpp"
+#include "BanditAlgorithms/EpsilonKGreedy/EpsilonKGreedy.hpp"
+#include "BanditAlgorithms/Pursuit/Pursuit.hpp"
 
 int main(const int argc, char* argv[]) {
-    //auto bandit = std::make_unique<BernoulliBandit>(0.5);
+    auto banditPool = std::make_shared<BanditPool>();
 
-    //for (auto i = 0u; i < 10u; ++i) {
-    //    auto temp = std::unique_ptr<BooleanReward>(bandit->GenerateReward());
+    banditPool->PushBandit(std::shared_ptr<Bandit>(new Bandit(0.15, "A")));
+    banditPool->PushBandit(std::shared_ptr<Bandit>(new Bandit(0.25, "B")));
+    banditPool->PushBandit(std::shared_ptr<Bandit>(new Bandit(0.28, "C")));
+    banditPool->PushBandit(std::shared_ptr<Bandit>(new Bandit(0.25, "D")));
+    banditPool->PushBandit(std::shared_ptr<Bandit>(new Bandit(0.17, "E")));
 
-    //    std::cout << std::format("{}. ", i + 1);
-    //    temp->GetValue() ? std::cout << "SUCCESS!\n" : std::cout << "FAIL(\n";
-    //}
+    auto algor = std::make_unique<Pursuit>(banditPool, 0.05);
 
-    auto banditPool = std::make_unique<BernoulliBanditPool>();
+    const auto s = algor->Execute(10000);
 
-    banditPool->PushBandit(std::shared_ptr<BernoulliBandit>(new BernoulliBandit(0.1)));
-    banditPool->PushBandit(std::shared_ptr<BernoulliBandit>(new BernoulliBandit(0.2)));
-    banditPool->PushBandit(std::shared_ptr<BernoulliBandit>(new BernoulliBandit(0.3)));
-    banditPool->PushBandit(std::shared_ptr<BernoulliBandit>(new BernoulliBandit(0.4)));
-    banditPool->PushBandit(std::shared_ptr<BernoulliBandit>(new BernoulliBandit(0.1)));
+    std::cout << std::format("Total reward: {}\n", s->GetTotalReward());
+    std::cout << std::format("Total regret: {}\n\n", s->GetTotalRegret());
 
-    for (auto i = 0u; i < 10u; i++) {
-        std::cout << std::format("SIMULATION #{}:\n", i + 1);
+    for (auto j = 0; j < s->GetPoolSize(); ++j) {
+        const auto bandit = s->GetPool()->GetBandit(j);
 
-        auto j = 0;
-        for (auto bandit : *banditPool) {
-            const auto reward = bandit->GenerateReward();
-            std::cout << std::format("BANDIT #{} ({}%): {}\n",
-                j + 1, bandit->GetProbability() * 100.0, reward->GetValue());
-
-            ++j;
-        }
-
-        std::cout << std::string(30u, '-') << std::endl;
+        std::cout << std::format("Arm \"{}\" ({})\n", bandit->GetName(), bandit->GetProbability());
+        std::cout << std::format("Reward count: {}\n", s->GetRewardCount(j));
+        std::cout << std::format("Reward rate: {}\n", s->GetRewardRate(j));
+        std::cout << std::format("Choose count: {}\n", s->GetChooseCount(j));
+        std::cout << std::format("Choose rate: {}\n", s->GetChooseRate(j));
+        std::cout << std::format("------------------------\n");
     }
+    std::cout << std::format("========================================\n");
 
     return EXIT_SUCCESS;
 }

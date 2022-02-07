@@ -3,49 +3,49 @@
 #include <vector>
 #include <memory>
 
-#include "Bandits/BernoulliBandit.hpp"
+#include "Bandit/Bandit.hpp"
 
-class BernoulliBanditPool {
+class BanditPool {
 public:
-    explicit BernoulliBanditPool() = default;
+    explicit BanditPool() = default;
 
-    explicit BernoulliBanditPool(const std::shared_ptr<BernoulliBandit>& bandit) : bandits_(1, bandit) {
+    explicit BanditPool(const std::shared_ptr<Bandit>& bandit) : bandits_(1, bandit) {
 
     }
 
-    explicit BernoulliBanditPool(const std::vector<std::shared_ptr<BernoulliBandit>>& bandits)
+    explicit BanditPool(const std::vector<std::shared_ptr<Bandit>>& bandits)
         : bandits_(bandits) {
 
     }
 
-    BernoulliBanditPool(const BernoulliBanditPool&) = default;
+    BanditPool(const BanditPool&) = default;
 
-    BernoulliBanditPool(BernoulliBanditPool&&) noexcept = default;
+    BanditPool(BanditPool&&) noexcept = default;
 
-    ~BernoulliBanditPool() noexcept = default;
+    ~BanditPool() noexcept = default;
 
-    BernoulliBanditPool& operator=(const BernoulliBanditPool&) = default;
+    BanditPool& operator=(const BanditPool&) = default;
 
-    BernoulliBanditPool& operator=(BernoulliBanditPool&&) noexcept = default;
+    BanditPool& operator=(BanditPool&&) noexcept = default;
 
     [[nodiscard]] size_t GetSize() const {
         return this->bandits_.size();
     }
 
-    [[nodiscard]] std::shared_ptr<BernoulliBandit> GetBandit(const size_t index) const {
+    [[nodiscard]] std::shared_ptr<Bandit> GetBandit(const size_t index) const {
         return this->bandits_.at(index);
     }
 
-    void PushBandit(std::shared_ptr<BernoulliBandit> bandit) {
+    void PushBandit(std::shared_ptr<Bandit> bandit) {
         this->bandits_.push_back(bandit);
     }
 
-    [[nodiscard]] std::shared_ptr<BooleanReward> GetReward(const size_t index) {
-        return std::shared_ptr<BooleanReward>(this->bandits_.at(index)->GenerateReward());
+    [[nodiscard]] bool GetReward(const size_t index) {
+        return this->bandits_.at(index)->GenerateReward();
     }
 
 private:
-    std::vector<std::shared_ptr<BernoulliBandit>> bandits_{};
+    std::vector<std::shared_ptr<Bandit>> bandits_{};
 
 public:
     auto begin() -> typename decltype(this->bandits_)::iterator {

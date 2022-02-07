@@ -21,7 +21,28 @@
     <ClCompile Include="include\pch\pch.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="include\Bandits\BernoulliBandit.cpp">
+    <ClCompile Include="src\BanditAlgorithms\Base\BaseBanditAlgorithm.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BanditStats\BanditStats.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BanditPool\BanditPool.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Bandit\Bandit.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Utils\Utils.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BanditAlgorithms\EpsilonGreedy\EpsilonGreedy.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BanditAlgorithms\EpsilonKGreedy\EpsilonKGreedy.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BanditAlgorithms\Pursuit\Pursuit.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,22 +50,28 @@
     <ClInclude Include="include\pch\pch.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\Bandits\IBandit.hpp">
+    <ClInclude Include="src\BanditAlgorithms\Base\BaseBanditAlgorithm.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\Rewards\IReward.hpp">
+    <ClInclude Include="src\BanditStats\BanditStats.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\Rewards\BooleanReward.hpp">
+    <ClInclude Include="src\BanditPool\BanditPool.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\Bandits\BernoulliBandit.hpp">
+    <ClInclude Include="src\Bandit\Bandit.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\BanditPools\BernoulliBanditPool.hpp">
+    <ClInclude Include="include\Utils\Utils.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\DecisionMaker\DecisionMaker.hpp">
+    <ClInclude Include="src\BanditAlgorithms\EpsilonGreedy\EpsilonGreedy.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BanditAlgorithms\EpsilonKGreedy\EpsilonKGreedy.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BanditAlgorithms\Pursuit\Pursuit.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
