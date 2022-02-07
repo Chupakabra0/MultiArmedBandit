@@ -159,6 +159,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\BanditAlgorithms\Softmax\Softmax.cpp" />
     <ClCompile Include="src\BanditAlgorithms\BernoulliThompson\BernoulliThompson.cpp" />
     <ClCompile Include="src\BanditAlgorithms\Pursuit\Pursuit.cpp" />
     <ClCompile Include="src\BanditAlgorithms\EpsilonKGreedy\EpsilonKGreedy.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="src\BanditAlgorithms\UCB1\UCB1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\BanditAlgorithms\Softmax\Softmax.hpp" />
     <ClInclude Include="src\BanditAlgorithms\BernoulliThompson\BernoulliThompson.hpp" />
     <ClInclude Include="src\BanditAlgorithms\Pursuit\Pursuit.hpp" />
     <ClInclude Include="src\BanditAlgorithms\EpsilonKGreedy\EpsilonKGreedy.hpp" />

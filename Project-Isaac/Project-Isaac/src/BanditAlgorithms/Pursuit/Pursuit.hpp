@@ -4,14 +4,9 @@
 class Pursuit : public BaseBanditAlgorithm {
 public:
     explicit Pursuit(const std::shared_ptr<BanditPool>& pool, const double beta)
-        : BaseBanditAlgorithm(pool),
+        : BaseBanditAlgorithm(pool), beta_(beta > 1.0 || beta < 0.0 ? 1.0 : beta),
           probabilities_(pool->GetSize(), 1.0 / static_cast<double>(pool->GetSize())) {
-        if (beta > 1.0 || beta < 0.0) {
-            this->beta_ = 1.0;
-        }
-        else {
-            this->beta_ = beta;
-        }
+
     }
 
     Pursuit(const Pursuit&) = default;

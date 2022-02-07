@@ -7,6 +7,7 @@
 #include "BanditAlgorithms/Pursuit/Pursuit.hpp"
 #include "BanditAlgorithms/UCB1/UCB1.hpp"
 #include "BanditAlgorithms/BernoulliThompson/BernoulliThompson.hpp"
+#include "BanditAlgorithms/Softmax/Softmax.hpp"
 
 int main(const int argc, char* argv[]) {
     auto banditPool = std::make_shared<BanditPool>();
@@ -17,7 +18,7 @@ int main(const int argc, char* argv[]) {
     banditPool->PushBandit(std::shared_ptr<Bandit>(new Bandit(0.25, "D")));
     banditPool->PushBandit(std::shared_ptr<Bandit>(new Bandit(0.05, "E")));
 
-    auto algor = std::make_unique<UCB1>(banditPool);
+    auto algor = std::make_unique<Softmax>(banditPool, 15);
 
     const auto s = algor->Execute(10000);
 

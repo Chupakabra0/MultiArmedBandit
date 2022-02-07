@@ -51,6 +51,9 @@
     <ClCompile Include="src\BanditAlgorithms\BernoulliThompson\BernoulliThompson.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\BanditAlgorithms\Softmax\Softmax.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\pch\pch.hpp">
@@ -84,6 +87,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="src\BanditAlgorithms\BernoulliThompson\BernoulliThompson.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BanditAlgorithms\Softmax\Softmax.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
