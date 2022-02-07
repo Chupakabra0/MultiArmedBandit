@@ -5,17 +5,19 @@
 #include "BanditAlgorithms/EpsilonGreedy/EpsilonGreedy.hpp"
 #include "BanditAlgorithms/EpsilonKGreedy/EpsilonKGreedy.hpp"
 #include "BanditAlgorithms/Pursuit/Pursuit.hpp"
+#include "BanditAlgorithms/UCB1/UCB1.hpp"
+#include "BanditAlgorithms/BernoulliThompson/BernoulliThompson.hpp"
 
 int main(const int argc, char* argv[]) {
     auto banditPool = std::make_shared<BanditPool>();
 
     banditPool->PushBandit(std::shared_ptr<Bandit>(new Bandit(0.15, "A")));
     banditPool->PushBandit(std::shared_ptr<Bandit>(new Bandit(0.25, "B")));
-    banditPool->PushBandit(std::shared_ptr<Bandit>(new Bandit(0.28, "C")));
+    banditPool->PushBandit(std::shared_ptr<Bandit>(new Bandit(0.30, "C")));
     banditPool->PushBandit(std::shared_ptr<Bandit>(new Bandit(0.25, "D")));
-    banditPool->PushBandit(std::shared_ptr<Bandit>(new Bandit(0.17, "E")));
+    banditPool->PushBandit(std::shared_ptr<Bandit>(new Bandit(0.05, "E")));
 
-    auto algor = std::make_unique<Pursuit>(banditPool, 0.05);
+    auto algor = std::make_unique<UCB1>(banditPool);
 
     const auto s = algor->Execute(10000);
 

@@ -159,6 +159,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\BanditAlgorithms\BernoulliThompson\BernoulliThompson.cpp" />
     <ClCompile Include="src\BanditAlgorithms\Pursuit\Pursuit.cpp" />
     <ClCompile Include="src\BanditAlgorithms\EpsilonKGreedy\EpsilonKGreedy.cpp" />
     <ClCompile Include="src\BanditAlgorithms\EpsilonGreedy\EpsilonGreedy.cpp" />
@@ -169,8 +170,10 @@
     <ClCompile Include="include\pch\pch.cpp" />
     <ClCompile Include="include\Utils\Utils.cpp" />
     <ClCompile Include="src\Source.cpp" />
+    <ClCompile Include="src\BanditAlgorithms\UCB1\UCB1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\BanditAlgorithms\BernoulliThompson\BernoulliThompson.hpp" />
     <ClInclude Include="src\BanditAlgorithms\Pursuit\Pursuit.hpp" />
     <ClInclude Include="src\BanditAlgorithms\EpsilonKGreedy\EpsilonKGreedy.hpp" />
     <ClInclude Include="src\BanditAlgorithms\EpsilonGreedy\EpsilonGreedy.hpp" />
@@ -180,6 +183,7 @@
     <ClInclude Include="src\Bandit\Bandit.hpp" />
     <ClInclude Include="include\pch\pch.hpp" />
     <ClInclude Include="include\Utils\Utils.hpp" />
+    <ClInclude Include="src\BanditAlgorithms\UCB1\UCB1.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,10 +2,7 @@
 #include "Bandit.hpp"
 
 bool Bandit::GenerateReward() {
-    std::random_device generator;
-    std::bernoulli_distribution ditribution(this->probability_);
-
-    const auto generatedValue = ditribution(generator);
+    const auto generatedValue = BoolRand(this->probability_);
 
     //std::clog << std::format("Generated value: {}\n", generatedValue);
     //std::clog << std::format("Probability value: {}%\n", this->probability_);

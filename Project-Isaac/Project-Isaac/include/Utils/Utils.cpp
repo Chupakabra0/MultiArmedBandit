@@ -1,13 +1,23 @@
 #include "pch/pch.hpp"
 
 bool BoolRand(const double probability) {
-    std::random_device gen;
+    static std::random_device gen;
+    //static std::default_random_engine gen;
     std::bernoulli_distribution boolDitribution(probability);
-    return boolDitribution(gen);
+    
+    const auto temp = boolDitribution(gen);
+    //std::clog << temp << std::endl;
+
+    return temp;
 }
 
 int IntRand(int low, int high) {
-    std::random_device gen;
+    static std::random_device gen;
+    //static std::default_random_engine gen;
     std::uniform_int_distribution<> intDitribution(low, high);
-    return intDitribution(gen);
+
+    const auto temp = intDitribution(gen);
+    //std::clog << temp << std::endl;
+
+    return temp;
 }
