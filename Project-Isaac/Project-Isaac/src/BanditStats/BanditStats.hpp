@@ -55,7 +55,7 @@ public:
     }
 
     [[nodiscard]] double GetRewardRate(int index) const {
-        return this->poolData_[index].second == 0 ? 0.0 : static_cast<double>(this->poolData_[index].first) / static_cast<double>(this->poolData_[index].second);
+        return this->poolData_[index].second == 0 ? std::numeric_limits<double>::infinity() : static_cast<double>(this->poolData_[index].first) / static_cast<double>(this->poolData_[index].second);
     }
     [[nodiscard]] int GetRewardCount(int index) const {
         return this->poolData_[index].first;
@@ -71,7 +71,7 @@ public:
     }
 
     [[nodiscard]] double GetChooseRate(int index) const {
-        return this->poolData_[index].second == 0 ? 0.0 : static_cast<double>(this->poolData_[index].second) / static_cast<double>(this->GetTotalChoose());
+        return this->poolData_[index].second == 0 ? std::numeric_limits<double>::infinity() : static_cast<double>(this->poolData_[index].second) / static_cast<double>(this->GetTotalChoose());
     }
 
     [[nodiscard]] double GetChooseCount(int index) const {

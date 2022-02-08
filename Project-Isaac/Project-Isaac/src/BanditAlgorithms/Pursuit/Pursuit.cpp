@@ -12,18 +12,10 @@ std::shared_ptr<BanditStats> Pursuit::Execute(int n) {
                 this->beta_ * (1.0 - this->probabilities_[j]);
         }
 
-        // TODO: util
-        for (auto j = 0; j < this->probabilities_.size(); ++j) {
-            if (j != optimalIndex) {
-                auto temp = BoolRand(this->probabilities_[j]);
+        std::vector<int> indexes(this->probabilities_.size(), 0);
+        std::iota(indexes.begin(), indexes.end(), 0);
 
-                if (temp) {
-                    optimalIndex = j;
-                    break;
-                }
-            }
-        }
-        //
+        optimalIndex = Rand(indexes.begin(), indexes.end(), this->probabilities_.begin(), this->probabilities_.end());
 
         const auto reward = this->stats_->GetReward(optimalIndex);
     }

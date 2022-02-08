@@ -21,3 +21,14 @@ int IntRand(int low, int high) {
 
     return temp;
 }
+
+double RealRand(double low, double high) {
+    static std::random_device gen;
+    //static std::default_random_engine gen;
+    std::uniform_real_distribution<> realDitribution(low, high);
+
+    const auto temp = realDitribution(gen);
+    //std::clog << temp << std::endl;
+
+    return temp;
+}
