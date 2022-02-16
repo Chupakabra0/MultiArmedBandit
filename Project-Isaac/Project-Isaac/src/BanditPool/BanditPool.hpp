@@ -18,6 +18,12 @@ public:
 
     }
 
+    explicit BanditPool(std::initializer_list<std::shared_ptr<Bandit>> bandits) {
+        for (auto bandit : bandits) {
+            this->bandits_.push_back(bandit);
+        }
+    }
+
     BanditPool(const BanditPool&) = default;
 
     BanditPool(BanditPool&&) noexcept = default;

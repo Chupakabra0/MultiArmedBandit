@@ -1,5 +1,7 @@
 #pragma once
 
+inline const auto SEED = 123;
+
 bool BoolRand(double);
 
 int IntRand(int, int);

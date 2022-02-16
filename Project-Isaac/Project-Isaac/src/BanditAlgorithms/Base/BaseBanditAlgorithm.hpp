@@ -35,6 +35,10 @@ public:
         return this->stats_;
     }
 
+    void SetPool(const std::shared_ptr<BanditPool>& pool) {
+        this->stats_->SetPool(pool);
+    }
+
 protected:
     std::shared_ptr<BanditStats> stats_;
 };

@@ -13,7 +13,7 @@ std::shared_ptr<BanditStats> Softmax::Execute(int n) {
 
         for (auto j = 0; j < this->stats_->GetPoolSize(); ++j) {
             this->probabilities_[j] = this->stats_->GetRewardRate(j) == std::numeric_limits<double>::infinity() ?
-                1.0 / this->stats_->GetPoolSize() :
+                1.0 :
                 std::exp(this->stats_->GetRewardRate(j) / this->t_) / totalExpSum;
         }
 
