@@ -10,8 +10,13 @@
 #include "BanditTest/Tests/PracticeTest1.hpp"
 
 int main(const int argc, char* argv[]) {
-    auto test = std::make_shared<PracticeTest1>(1'000);
-    test->LaunchTest();
+    constexpr auto iterations = 1;
+
+    for (auto i = 0; i < iterations; ++i) {
+        auto test = std::make_shared<PracticeTest1>(20'000);
+        test->LaunchTest();
+        std::cout << std::endl << std::endl;
+    }
     
     return EXIT_SUCCESS;
 }

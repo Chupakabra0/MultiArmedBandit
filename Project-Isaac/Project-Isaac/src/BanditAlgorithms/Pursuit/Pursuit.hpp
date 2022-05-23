@@ -5,7 +5,8 @@ class Pursuit : public BaseBanditAlgorithm {
 public:
     explicit Pursuit(const std::shared_ptr<BanditPool>& pool, const double beta)
         : BaseBanditAlgorithm(pool), beta_(beta > 1.0 || beta < 0.0 ? 1.0 : beta),
-          probabilities_(pool->GetSize(), 1.0 / static_cast<double>(pool->GetSize())) {
+          probabilities_(pool->GetSize(), 1.0 / static_cast<double>(pool->GetSize())),
+          u_(pool->GetSize(), 0.0) {
 
     }
 
@@ -24,5 +25,6 @@ public:
 private:
     double beta_;
     std::vector<double> probabilities_;
+    std::vector<double> u_;
 };
 

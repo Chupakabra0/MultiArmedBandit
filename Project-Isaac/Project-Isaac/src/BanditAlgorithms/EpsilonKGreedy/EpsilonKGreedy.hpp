@@ -25,8 +25,8 @@ private:
     double epsilon_;
     double c_;
 
-    void Explore();
-    void Exploit();
-    [[nodiscard]] double GetD();
+    void Explore() const;
+    void Exploit() const;
+    [[nodiscard]] double GetD() const;
 };
 

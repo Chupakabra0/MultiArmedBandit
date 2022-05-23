@@ -21,28 +21,28 @@ std::shared_ptr<BanditStats> EpsilonKGreedy::Execute(int n) {
     return this->stats_;
 }
 
-double EpsilonKGreedy::GetD() {
+double EpsilonKGreedy::GetD() const {
     std::vector<double> temp(this->stats_->GetPoolSize(), 0.0);
     for (auto i = 0; i < temp.size(); ++i) {
         temp[i] = this->stats_->GetRewardRate(i);
     }
-    
-    auto maxIter = std::max_element(temp.begin(), temp.end());
+
+    const auto maxIter   = std::ranges::max_element(temp);
     const auto max = *maxIter;
     temp.erase(maxIter);
 
-    const auto preMax = *std::max_element(temp.begin(), temp.end());
+    const auto preMax = *std::ranges::max_element(temp);
     const auto diff   = max - preMax;
 
     return diff;
 }
 
-void EpsilonKGreedy::Explore() {
+void EpsilonKGreedy::Explore() const {
     const auto index = IntRand(0, this->stats_->GetPoolSize() - 1);
     const auto reward = this->stats_->GetReward(index);
 }
 
-void EpsilonKGreedy::Exploit() {
+void EpsilonKGreedy::Exploit() const {
     auto optimalBanditIndex = this->stats_->GetLocalOptimalBanditIndex();
     std::vector<int> optimalBanditIndexes;
 
